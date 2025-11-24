@@ -25,3 +25,31 @@ img {
         font-size: 3.5rem;
     }
 }
+.bg-base{
+  color: #fff;
+  padding: 10px;
+  display: inline-flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+.bg-base.bg-capacity{
+  background-color: #ff0000;
+}
+
+.bg-base.bg-public-computers {
+  background-color: #7B68EE; 
+}
+.bg-base.bg-accessible {
+  background-color: #0000ff; 
+}
+.bg-base.bg-library {
+  background-color: #008000; 
+}
+.bg-base.bg-vending-machines{
+  background-color: #FF8C00; 
+}
+.p-center{
+  text-align: center;
+  padding: 5px;
+}
+
