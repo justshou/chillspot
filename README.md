@@ -23,9 +23,9 @@ After installation, run XAMPP and start Apache and MySQL.
 Click "Admin" for MySQL, and run the following under "SQL" at the top
 
 ```sql
-CREATE DATABASE jwt_auth_db;
+CREATE DATABASE spots_db;
 
-USE jwt_auth_db;
+USE spots_db;
 
 CREATE TABLE spots (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
