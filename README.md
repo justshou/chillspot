@@ -37,6 +37,8 @@ imgURL TEXT
 );
 ```
 
+Finally, rename `dotenv` to `.env`
+
 ## Usage
 
 To start the frontend application, run the following
