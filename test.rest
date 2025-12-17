@@ -1,0 +1,20 @@
+### POST new spot (JSON)
+POST http://localhost:3000/newSpot
+Content-Type: application/json
+
+{
+	"name": "Kresge 2nd Floor",
+    "building": "Kresge",
+	"floor": "2nd Floor",
+    "seats": "3",
+    "imgURL": "https://mashou.xyz/images/github.svg"
+}
+
+### Example without JSON header (shows failure)
+# POST http://localhost:3000/newSpot
+# {
+#   "name": "NoHeader",
+#   "lat": 1,
+#   "lon": 2
+# }
+
