@@ -28,7 +28,16 @@ app.get("/", (req, res) => {
 // CREATE
 app.post("/insert", (req, res) => {
   console.log("POST /insert body:", req.body);
-  res.json({ status: "ok", received: req.body });
+  const db = dbService.getDbServiceInstance();
+  const { name, building, floor, seats, imgURL } = req.body;
+  db.insertSpot({ name, building, floor, seats, imgURL })
+    .then((result) => {
+      res.json({ status: "ok", insertedId: result.insertId });
+    })
+    .catch((err) => {
+      console.error("Insert error:", err);
+      res.status(500).json({ status: "error", error: err.message });
+    });
 });
 
 //app.use("/routes/databaseRoute.js");

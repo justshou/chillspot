@@ -40,6 +40,30 @@ class DbService {
       console.log(error);
     }
   }
+
+  async insertSpot({ name, building, floor, seats, imgURL }) {
+    try {
+      const response = await new Promise((resolve, reject) => {
+        const query = `INSERT INTO spots (name, building, floor, seats, imgURL) VALUES (?, ?, ?, ?, ?)`;
+        const params = [
+          name || null,
+          building || null,
+          floor || null,
+          seats || 0,
+          imgURL || null,
+        ];
+
+        connection.query(query, params, (err, result) => {
+          if (err) return reject(new Error(err.message));
+          resolve({ insertId: result.insertId });
+        });
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 }
 
 module.exports = DbService;
