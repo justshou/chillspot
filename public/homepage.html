@@ -103,90 +103,9 @@
       </section>
       <div class="album py-5 bg-light">
         <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div class="col">
-              <div class="card shadow-sm">
-                <img
-                  src="chill%20spot%20images/study-space1.jpeg"
-                  alt="chillspot1.jpg"
-                />
-
-                <div class="card-body">
-                  <p class="card-text mx-auto w-50 text-center">
-                    STEM Innovation Learning Center
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <!--button-->
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#stemCenter"
-                      >
-                        View
-                      </button>
-                    </div>
-                    <small class="text-muted">5 seats</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <img
-                  src="chill%20spot%20images/state-hall-study.jpg"
-                  alt="chillspot2.jpg"
-                />
-                <div class="card-body">
-                  <p class="card-text mx-auto w-50 text-center">
-                    State Hall Common Area
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                    </div>
-                    <small class="text-muted">10 seats</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <img
-                  src="chill%20spot%20images/school-of-medicine-study-spot.jpg"
-                  alt="chillspot3.jpg"
-                />
-
-                <div class="card-body">
-                  <p class="card-text mx-auto w-50 text-center">
-                    School of Medicine Study Area
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                    </div>
-                    <small class="text-muted">5 seats</small>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="spotsRow">
+            <!-- Dynamic cards will be injected here by client-side JS -->
+          </div>
 
             <!--<div class="col">
           <div class="card shadow-sm">
@@ -304,10 +223,45 @@
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-      
+    
+
   </body>
 </html>
 -->
+
+  <script>
+      async function loadSpots() {
+        try {
+          const res = await fetch('/getAllSpots');
+          const spots = await res.json();
+          const row = document.getElementById('spotsRow');
+          if (!row) return;
+          row.innerHTML = '';
+          spots.forEach((spot) => {
+            const col = document.createElement('div');
+            col.className = 'col';
+            col.innerHTML = `
+              <div class="card shadow-sm">
+                <img src="${spot.imgURL || 'chill%20spot%20images/default.jpg'}" alt="${spot.name || ''}" style="object-fit:cover; width:100%; height:225px;" />
+                <div class="card-body">
+                  <p class="card-text text-center">${spot.name || ''}<br><small class="text-muted">${spot.building || ''} ${spot.floor ? ' - ' + spot.floor : ''}</small></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    </div>
+                    <small class="text-muted">${spot.seats || 0} seats</small>
+                  </div>
+                </div>
+              </div>
+            `;
+            row.appendChild(col);
+          });
+        } catch (err) {
+          console.error('Failed to load spots', err);
+        }
+      }
+      document.addEventListener('DOMContentLoaded', loadSpots);
+    </script>
 
             <div class="modal fade" id="stemCenter" tabindex="-1">
               <div class="modal-dialog">

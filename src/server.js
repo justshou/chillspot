@@ -37,7 +37,16 @@ app.post("/insert", (req, res) => {
 app.get("/getAllSpots", (req, res) => {
   const db = dbService.getDbServiceInstance();
 
-  const result = db.getAllSpots();
+  // Query the database and return JSON
+  db.getAllSpots()
+    .then((result) => {
+      // result should be an array of spot objects
+      res.json(result);
+    })
+    .catch((err) => {
+      console.error("Error fetching spots:", err);
+      res.status(500).json({ error: "Failed to fetch spots" });
+    });
 });
 
 // Print whenever we start the server
