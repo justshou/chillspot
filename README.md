@@ -2,6 +2,11 @@
 
 ChillSpot is a University Application used for finding spots to chill on campus.
 
+## Prerequisites
+
+- **Node.js** (v14 or later) and npm (Node Package Manager)
+- **MySQL** (Ensure that you have MySQL installed and running)
+
 ## Installation & Setup
 
 Clone the repository
@@ -28,7 +33,7 @@ CREATE DATABASE spots_db;
 USE spots_db;
 
 CREATE TABLE spots (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
 name TEXT,
 building TEXT,
 floor TEXT,
