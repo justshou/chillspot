@@ -31,10 +31,13 @@ app.post("/insert", (req, res) => {
   res.json({ status: "ok", received: req.body });
 });
 
-// READ
 //app.use("/routes/databaseRoute.js");
-app.get("/getSpots", (req, res) => {
-  res.json({});
+
+// READ
+app.get("/getAllSpots", (req, res) => {
+  const db = dbService.getDbServiceInstance();
+
+  const result = db.getAllSpots();
 });
 
 // Print whenever we start the server
