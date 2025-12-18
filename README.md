@@ -52,7 +52,20 @@ To start the frontend application, run the following
 npm run dev
 ```
 
-To start the executable application, run the .exe provided
+To start the executable application, open the IntelliJ project available under "JAVA APPLICATION" and press "Run"
+
+To provide a basic user experience, please add the following to your SQL statements to startup the website with some basic spots. If you wish, you can manually do this through the Java application, filling it out as you wish.
+
+```sql
+INSERT INTO spots (name, building, floor, seats, imgURL)
+VALUES (
+  'Study Nook A',
+  'Kresge Library',
+  '3',
+  4,
+  'https://snworksceo.imgix.net/pri/7db8796e-27e5-43f3-83d4-36d85795570b.sized-1000x1000.jpg?w=1000'
+);
+```
 
 ## Development Team
 
