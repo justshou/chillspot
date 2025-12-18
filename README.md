@@ -52,7 +52,7 @@ To start the frontend application, run the following
 npm run dev
 ```
 
-To start the executable application, open the IntelliJ project available under "JAVA APPLICATION" and press "Run"
+To start the executable application, right click to open the CHILLSPOT folder as an IntelliJ project available under "JAVA APPLICATION" and press "Run"
 
 To provide a basic user experience, please add the following to your SQL statements to startup the website with some basic spots. If you wish, you can manually do this through the Java application, filling it out as you wish.
 
